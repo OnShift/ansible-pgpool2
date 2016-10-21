@@ -40,13 +40,15 @@ pgpool2_hba_custom: []
 
 pgpool2_pool_users: []
 
+pgpool2_backend_host: 'localhost'
+pgpool2_backend_data_directory: '/var/lib/postgresql/9.5/main'
+pgpool2_backend_flag: 'ALLOW_TO_FAILOVER'
+pgpool2_backend_port: '5432'
+pgpool2_backend_weight: 1
+
 # pgpool2_backends:
-#   - name: name_of_host
-#     host: hostname or 10.10.10.10
-#     port: 5432
-#     weight: 1
-#     data_directory: /var/lib/postgresql/9.4/main
-#     flag: ALLOW_TO_FAILOVER
+#     - pgpool1
+#     - pgpool2
 
 pgpool2_backends: []
 
