@@ -70,7 +70,7 @@ pcp_socket_dir = '{{ pgpool2_pcp_socket_dir }}'
 
 {% for backend in pgpool2_backends %}
 
-# Server {{ backend.name }}
+# Server {{ hostvars[backend]['inventory_hostname'] }}
 backend_hostname{{ loop.index0 }} = "{{ hostvars[backend]['pgpool2_backend_host'] }}"
 backend_port{{ loop.index0 }} = {{ hostvars[backend]['pgpool2_backend_port'] }}
 backend_weight{{ loop.index0 }} = {{ hostvars[backend]['pgpool2_backend_weight'] }}
