@@ -547,13 +547,13 @@ wd_heartbeat_deadtime = {{ pgpool2_wd_heartbeat_deadtime }}
 
 {% for node in pgpool2_heartbeat_nodes %}
 
-{% if inventory_hostname != node.hostname %}
-# Server {{ node.hostname }}
-heartbeat_destination{{ loop.index0 }} = '{{ node.address }}'
-{% if node.port != '' %}
-heartbeat_destination_port{{ loop.index0 }} = {{ node.port }}
+{% if inventory_hostname != hostvars[node]['inventory_hostname'] %}
+# Server {{ hostvars[node]['inventory_hostname'] }}
+heartbeat_destination{{ loop.index0 }} = '{{ hostvars[node]["pgpool2_heartbeat_host"] }}'
+{% if hostvars[node]['pgpool2_heartbeat_port'] is defined %}
+heartbeat_destination_port{{ loop.index0 }} = {{ hostvars[node]['pgpool2_heartbeat_port'] }}
 {% endif %}
-heartbeat_device{{ loop.index0 }} = '{{ node.device }}'
+heartbeat_device{{ loop.index0 }} = '{{ hostvars[node]["pgpool2_heartbeat_device"] }}'
 {% endif %}
 {% endfor %}
 
@@ -592,11 +592,11 @@ wd_lifecheck_password = '{{ pgpool2_wd_lifecheck_password }}'
 
 {% for node in pgpool2_query_nodes %}
 
-{% if inventory_hostname != node.hostname %}
-# Server {{ node.hostname }}
-other_pgpool_hostname{{ loop.index0 }} = '{{ node.address }}'
-other_pgpool_port{{ loop.index0 }} = {{ node.port }}
-other_wd_port{{ loop.index0 }} = {{ node.wd_port }}
+{% if inventory_hostname != hostvars[node]['inventory_hostname'] %}
+# Server {{ hostvars[node]['inventory_hostname'] }}
+other_pgpool_hostname{{ loop.index0 }} = '{{ hostvars[node]["pgpool2_query_host"] }}'
+other_pgpool_port{{ loop.index0 }} = {{ hostvars[node]['pgpool2_query_port'] }}
+other_wd_port{{ loop.index0 }} = {{ hostvars[node]['pgpool2_query_wd_port'] }}
 {% endif %}
 {% endfor %}
 

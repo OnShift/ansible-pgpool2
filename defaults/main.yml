@@ -47,24 +47,21 @@ pgpool2_backend_port: '5432'
 pgpool2_backend_weight: 1
 
 # pgpool2_backends:
-#     - pgpool1
-#     - pgpool2
+#     - postgres1
+#     - postgres2
+#     - postgres3
 
 pgpool2_backends: []
 
 # pgpool2_heartbeat_nodes:
-#   - hostname: hostname2
-#     address: 10.10.10.10
-#     port: 9694
-#     device: eth0
+#     - pgpool1
+#     - pgpool2
 
 pgpool2_heartbeat_nodes: []
 
 # pgpool2_query_nodes:
-#  - hostname: hostname1
-#    address: 10.10.10.10
-#    port: 5432
-#    wd_port: 9000
+#     - pgpool1
+#     - pgpool2
 
 pgpool2_query_nodes: []
 
