@@ -31,11 +31,11 @@ pcp_command () {
 	shift
 	shift
 	if [[ $__resultvar -eq NODE_COUNT ]]; then
-                eval $__resultvar=$(pcp_$command "$PCP_TIMEOUT" "$PCP_HOST" "$PCP_PORT" \
-					     "$PCP_USER" "$PCP_PASSWD" "$@")
+                eval $__resultvar=$(pcp_$command -h "$PCP_HOST" -p "$PCP_PORT" \
+					     -U "$PCP_USER" "$@")
 	else
-                eval $__resultvar='$(pcp_$command "$PCP_TIMEOUT" "$PCP_HOST" "$PCP_PORT" \
-	                                      "$PCP_USER" "$PCP_PASSWD" "$@")'
+                eval $__resultvar='$(pcp_$command -h "$PCP_HOST" -p "$PCP_PORT" \
+	                                      -U "$PCP_USER" "$@")'
 	fi
 }
 
