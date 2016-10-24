@@ -13,6 +13,12 @@
   args:
     creates: "{{ pgpool2_confdir }}/pcp.conf.dpkg-divert"
 
+- name: Create PCP password file ~/.pcppass
+  template:
+    src: pcppass.j2
+    dest: ~/.pcppass
+    mode: 0600
+
 - name: PCP authentication registry file {{ pgpool2_confdir }}/pcp.conf
   template:
     src: pcp.conf.j2
