@@ -32,10 +32,10 @@ pcp_command () {
 	shift
 	if [[ $__resultvar -eq NODE_COUNT ]]; then
                 eval $__resultvar=$(pcp_$command -h "$PCP_HOST" -p "$PCP_PORT" \
-					     -U "$PCP_USER" "$@")
+					     -U "$PCP_USER" -w "$@")
 	else
                 eval $__resultvar='$(pcp_$command -h "$PCP_HOST" -p "$PCP_PORT" \
-	                                      -U "$PCP_USER" "$@")'
+	                                      -U "$PCP_USER" -w "$@")'
 	fi
 }
 
