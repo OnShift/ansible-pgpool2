@@ -1,21 +1,25 @@
 ---
 
 - name: start pgpool2
+  become: true
   service:
     name: pgpool2
     state: started
 
 - name: stop pgpool2
+  become: true
   service:
     name: pgpool2
     state: stopped
 
 - name: restart pgpool2
+  become: true
   service:
     name: pgpool2
     state: restarted
 
 - name: reload pgpool2
+  become: true
   service:
     name: pgpool2
     state: reloaded
