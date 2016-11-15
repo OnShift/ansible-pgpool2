@@ -23,7 +23,7 @@ if [ -f /etc/default/pgpool2 ] ; then
 	. /etc/default/pgpool2
 fi
 
-OPTS="{{ '-D' if pgpool2_init_discard_status == 'on' else '' }}"
+OPTS="{{ '-D' if pgpool2_init_discard_status == true else '' }}"
 if [ x"$PGPOOL_LOG_DEBUG" = x"yes" ]; then
 	OPTS="$OPTS -d"
 fi
