@@ -1,5 +1,20 @@
 ---
 
+- name: Add user credentials into the .pgpass file
+  become: true
+  become_user: '{{ pgpool2_user }}'
+  lineinfile:
+    dest: '~/.pgpass'
+    line: '*:{{ pgpool2_port }}:*:{{ item.name }}:{{ item.pass }}'
+    regexp: '^\*\:{{ pgpool2_port }}\:\*\:{{ item.name }}\:{{ item.pass }}$'
+    state: present
+    create: yes
+    owner: '{{ pgpool2_user }}'
+    group: '{{ pgpool2_user }}'
+    mode: 0600
+  ignore_errors: "{{ ansible_check_mode }}"
+  with_items: '{{ pgpool2_pool_users }}'
+
 - name: Create "/var/log/postgresql/" directory with necessary privileges
   file:
     dest: "/var/log/postgresql/"
